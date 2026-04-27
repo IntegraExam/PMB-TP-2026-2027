@@ -11,11 +11,16 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+    section { margin: 0; }
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0.5rem; }
+    p { margin-bottom: 1rem; }
+    .max-w-7xl { margin-left: auto; margin-right: auto; }
+    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .font-display { font-family: 'Playfair Display', serif; }
 
     .hero-bg {
-      background: linear-gradient(135deg, #1e293b 0%, #1a1f3a 35%, #2e1065 70%, #4c1d95 100%);
+      background: linear-gradient(135deg, #0F2C4A 0%, #1a3a5c 25%, #2D5F8D 50%, #1e4d6f 75%, #0a1f35 100%);
       position: relative;
       overflow: hidden;
     }
@@ -101,147 +106,156 @@
  </head>
  <body class="h-full">
   <div id="app-wrapper" class="w-full h-full overflow-auto" style="background: linear-gradient(180deg, #f8fafc 0%, #f1e5ff 50%, #e0f2ff 100%);">
-   <!-- Navigation -->
+   <!-- ═══════════════════════════════════════════════════════════════════════════════════
+       🎨 AREA 1: NAVIGASI & HEADER (Navigation Bar di atas)
+       Bagian: Logo, Menu Navigasi, Tombol Daftar, WhatsApp Button
+       ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Navigation -->
    <nav id="navbar" style="background: linear-gradient(90deg, #1e293b 0%, #2e1065 50%, #4c1d95 100%);" class="sticky top-0 z-50 shadow-2xl backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16">
-      <div class="flex items-center gap-3">
-       <!-- ðŸŽ¨ LOGO SEKOLAH --> <img id="navbar-logo" src="https://i.imgur.com/J1mKppg.png" alt="Logo PKBM" style="height: 40px; width: auto; object-fit: contain;" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.background='#f59e0b'; this.alt='Logo unavailable';"><!-- ðŸ“ NAMA SEKOLAH - UBAH NAMA DI SINI --> <span id="nav-title" class="text-white font-bold text-lg hidden sm:block">PKBM Ristek Nusantara Jaya</span> <span class="text-white font-bold text-lg sm:hidden">PKBM RNJ</span>
-      </div>
-      <div class="hidden md:flex items-center gap-8">
-       <a href="#beranda" class="nav-link text-white/90 hover:text-white text-sm font-medium">Beranda</a> <a href="#tentang" class="nav-link text-white/90 hover:text-white text-sm font-medium">Tentang</a> <a href="#program" class="nav-link text-white/90 hover:text-white text-sm font-medium">Program</a> <a href="#fasilitas" class="nav-link text-white/90 hover:text-white text-sm font-medium">Fasilitas</a> <a href="#kontak" class="nav-link text-white/90 hover:text-white text-sm font-medium">Kontak</a> <a href="#kontak" id="nav-cta" class="px-4 py-2 rounded-full text-sm font-semibold text-white transition-all hover:scale-105" style="background-color: #f59e0b;">Daftar Sekarang</a>
-      </div><button id="mobile-toggle" class="md:hidden text-white" onclick="document.getElementById('mobile-nav').classList.toggle('open')"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+    <div class="w-full mx-auto px-3 sm:px-4 lg:px-8">
+     <div class="flex items-center justify-between h-14 sm:h-16">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+       <span id="nav-title" class="text-white font-bold text-xs sm:text-lg truncate">PKBM Ristek Nusantara Jaya</span>
+      </div><button id="whatsapp-btn" onclick="openWhatsAppAdmin()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full shadow-2xl transition-all hover:scale-110 hover:shadow-3xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #25d366, #128c7e); border: none; cursor: pointer; pointer-events: auto;"> <i data-lucide="message-circle" style="width:24px;height:24px;color:white;"></i> </button>
+      <div class="hidden md:flex items-center gap-3 lg:gap-6">
+       <a href="#beranda" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Beranda</a> <a href="#tentang" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Tentang</a> <a href="#program" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Program</a> <a href="#tujuan" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Visi Misi</a> <a href="#jadwal" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Jadwal</a> <a href="#testimoni" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Alumni</a> <a href="#kontak" class="nav-link text-white/90 hover:text-white text-xs lg:text-sm font-medium">Kontak</a> <a href="#kontak" id="nav-cta" class="px-3 py-2 rounded-full text-xs lg:text-sm font-semibold text-white transition-all hover:scale-105 relative z-30" style="background-color: #f59e0b;">Daftar</a>
+      </div><button id="mobile-toggle" class="md:hidden text-white p-1 relative z-30" onclick="document.getElementById('mobile-nav').classList.toggle('open')"> <i data-lucide="menu" style="width:20px;height:20px;"></i> </button>
      </div>
      <div id="mobile-nav" class="mobile-menu md:hidden pb-2">
-      <div class="flex flex-col gap-2 pt-2 border-t border-white/20">
-       <a href="#beranda" class="text-white/90 hover:text-white text-sm py-2">Beranda</a> <a href="#tentang" class="text-white/90 hover:text-white text-sm py-2">Tentang</a> <a href="#program" class="text-white/90 hover:text-white text-sm py-2">Program</a> <a href="#fasilitas" class="text-white/90 hover:text-white text-sm py-2">Fasilitas</a> <a href="#kontak" class="text-white/90 hover:text-white text-sm py-2">Kontak</a> <a href="#kontak" class="px-4 py-2 rounded-full text-sm font-semibold text-white text-center mt-1" style="background-color: #f59e0b;">Daftar Sekarang</a>
+      <div class="flex flex-col gap-1 pt-2 border-t border-white/20">
+       <a href="#beranda" class="text-white/90 hover:text-white text-xs py-2 px-2">Beranda</a> <a href="#tentang" class="text-white/90 hover:text-white text-xs py-2 px-2">Tentang</a> <a href="#program" class="text-white/90 hover:text-white text-xs py-2 px-2">Program</a> <a href="#tujuan" class="text-white/90 hover:text-white text-xs py-2 px-2">Visi Misi</a> <a href="#jadwal" class="text-white/90 hover:text-white text-xs py-2 px-2">Jadwal</a> <a href="#testimoni" class="text-white/90 hover:text-white text-xs py-2 px-2">Alumni</a> <a href="#kontak" class="text-white/90 hover:text-white text-xs py-2 px-2">Kontak</a> <a href="#kontak" class="px-3 py-2 rounded-full text-xs font-semibold text-white text-center mt-1 block" style="background-color: #f59e0b;">Daftar</a>
       </div>
      </div>
     </div>
-   </nav><!-- Hero Section -->
+   </nav><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🌟 AREA 2: HALAMAN UTAMA / HERO SECTION (Banner utama dengan gambar latar)
+        Bagian: Judul besar, Tagline, Deskripsi, Tombol CTA, Statistik
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Hero Section -->
    <section id="beranda" class="hero-bg relative">
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
-     <div class="max-w-3xl">
-      <div class="fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium text-amber-100 mb-6" style="background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.4);">
-       <i data-lucide="award" style="width:16px;height:16px;"></i> Terakreditasi &amp; Terpercaya
-      </div>
-      <h1 id="hero-title" class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight fade-in fade-in-delay-1">PKBM Ristek<br>
-        Nusantara Jaya</h1><!-- ðŸŽ¨ [TAGLINE/MOTTO SEKOLAH - UBAH KALIMAT DI SINI] -->
-      <p id="hero-tagline" class="text-xl sm:text-2xl font-bold mt-4 fade-in fade-in-delay-2 gradient-text">Membangun Generasi Cerdas &amp; Berkarakter</p><!-- âœï¸ [DESKRIPSI HERO - UBAH PENJELASAN SINGKAT DI SINI] -->
-      <p id="hero-desc" class="text-white/80 mt-5 text-base sm:text-lg max-w-2xl leading-relaxed fade-in fade-in-delay-3">Pusat Kegiatan Belajar Masyarakat yang menyediakan pendidikan kesetaraan berkualitas untuk semua kalangan. Bersama kami, raih ijazah dan masa depan cerah.</p>
-      <div class="flex flex-wrap gap-4 mt-8 fade-in fade-in-delay-4">
-       <a href="#program" class="inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-white transition-all hover:scale-105 shadow-lg hover:shadow-2xl" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);"> <i data-lucide="book-open" style="width:18px;height:18px;"></i> Lihat Program </a> <a href="#kontak" class="inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-white transition-all hover:scale-105 hover:shadow-xl" style="border: 2px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);"> <i data-lucide="phone" style="width:18px;height:18px;"></i> Hubungi Kami </a>
-      </div>
-     </div><!-- Stats -->
-     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
-      <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-1">
-       <div class="text-3xl font-extrabold text-white">
-        1000+
+    <div class="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-20 lg:py-36">
+     <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="max-w-3xl">
+       <div class="fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium text-amber-100 mb-6" style="background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.4);">
+        <i data-lucide="award" style="width:16px;height:16px;"></i> Terakreditasi &amp; Terpercaya
        </div>
-       <div class="text-sm text-white/70 mt-1">
-        Alumni Lulus
+       <h1 id="hero-title" class="font-display text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight fade-in fade-in-delay-1">PKBM Ristek<br>
+         Nusantara Jaya</h1>
+       <p id="hero-tagline" class="text-lg sm:text-xl lg:text-2xl font-bold mt-3 sm:mt-4 fade-in fade-in-delay-2 gradient-text">Membangun Generasi Cerdas &amp; Berkarakter</p>
+       <p id="hero-desc" class="text-white/80 mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed fade-in fade-in-delay-3">Pusat Kegiatan Belajar Masyarakat yang menyediakan pendidikan kesetaraan berkualitas untuk semua kalangan. Bersama kami, raih ijazah dan masa depan cerah.</p>
+       <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 fade-in fade-in-delay-4">
+        <a href="#program" class="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base text-white transition-all hover:scale-105 shadow-lg hover:shadow-2xl" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);"> <i data-lucide="book-open" style="width:18px;height:18px;"></i> <span class="hidden sm:inline">Lihat Program</span> <span class="sm:hidden">Program</span> </a> <a href="#kontak" class="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base text-white transition-all hover:scale-105 hover:shadow-xl" style="border: 2px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);"> <i data-lucide="phone" style="width:18px;height:18px;"></i> <span class="hidden sm:inline">Hubungi Kami</span> <span class="sm:hidden">Hubungi</span> </a>
        </div>
       </div>
-      <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-2">
-       <div class="text-3xl font-extrabold text-white">
-        15+
+      <div class="fade-in fade-in-delay-2 hidden lg:flex lg:justify-center lg:items-center">
+       <div class="relative" style="width: 100%; max-width: 280px;"><!-- Decorative elements -->
+        <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-20 blur-3xl" style="background: linear-gradient(135deg, #06b6d4, #0891b2);"></div>
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 rounded-full opacity-15 blur-2xl" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);"></div><!-- Photo container with soft edges -->
+        <div class="relative z-10" style="aspect-ratio: 3/4; overflow: hidden; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;"><img id="hero-headmaster-photo" src="https://i.imgur.com/blC1E40.png" alt="Kepala PKBM Ristek Nusantara Jaya" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.1) contrast(1.08);" loading="lazy" onerror="console.error('Photo failed to load:', this.src); this.style.display='none'; document.getElementById('hero-headmaster-placeholder').style.display='flex';">
+         <div id="hero-headmaster-placeholder" class="w-full h-full flex flex-col items-center justify-center text-white" style="background: linear-gradient(135deg, #0891b2, #06b6d4); display: none;">
+          <div class="text-5xl font-bold opacity-30 mb-3">
+           👤
+          </div>
+          <p class="text-xs opacity-50">Foto Kepala Sekolah</p>
+         </div>
+        </div>
+        <div class="absolute -bottom-24 left-0 right-0 text-center z-20">
+         <div class="bg-white rounded-2xl p-4 shadow-lg">
+          <h4 class="text-slate-800 font-bold text-sm">Nur Khasanah.M.Pd</h4>
+          <p class="text-slate-600 text-xs mt-1">Kepala PKBM Ristek Nusantara Jaya</p>
+         </div>
+        </div>
        </div>
-       <div class="text-sm text-white/70 mt-1">
-        Tenaga Pengajar
+      </div><!-- Stats Only -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
+       <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-1">
+        <div class="text-2xl sm:text-3xl font-extrabold text-white">
+         500+
+        </div>
+        <div class="text-xs sm:text-sm text-white/70 mt-1">
+         Alumni Lulus
+        </div>
        </div>
-      </div>
-      <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-3">
-       <div class="text-3xl font-extrabold text-white">
-        3
+       <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-2">
+        <div class="text-2xl sm:text-3xl font-extrabold text-white">
+         15+
+        </div>
+        <div class="text-xs sm:text-sm text-white/70 mt-1">
+         Tenaga Pengajar
+        </div>
        </div>
-       <div class="text-sm text-white/70 mt-1">
-        Program Kesetaraan
+       <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-3">
+        <div class="text-2xl sm:text-3xl font-extrabold text-white">
+         3
+        </div>
+        <div class="text-xs sm:text-sm text-white/70 mt-1">
+         Program Kesetaraan
+        </div>
        </div>
-      </div>
-      <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-4">
-       <div class="text-3xl font-extrabold text-white">
-        100%
-       </div>
-       <div class="text-sm text-white/70 mt-1">
-        Tingkat Kelulusan
+       <div class="stat-card rounded-2xl p-5 text-center fade-in fade-in-delay-4">
+        <div class="text-2xl sm:text-3xl font-extrabold text-white">
+         100%
+        </div>
+        <div class="text-xs sm:text-sm text-white/70 mt-2">
+         Tingkat Kelulusan
+        </div>
        </div>
       </div>
      </div>
-    </div><!-- Wave Divider -->
-    <svg class="absolute bottom-0 w-full" viewbox="0 0 1440 80" fill="none"><path d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,56C840,59,960,53,1080,48C1200,43,1320,37,1380,34.7L1440,32V80H0Z" fill="#f0f9ff" />
-    </svg>
-   </section><!-- Tentang -->
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        📖 AREA 3: TENTANG KAMI (Informasi lengkap tentang sekolah)
+        Bagian: Deskripsi, Keunggulan (3 box), Testimoni Kepala Sekolah
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Tentang -->
    <section id="tentang" class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div>
-       <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Tentang Kami</span> <!-- ðŸ“ [JUDUL TENTANG KAMI - UBAH JUDUL SECTION DI SINI] -->
+       <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Tentang Kami</span>
        <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 gradient-text">Pendidikan Untuk Semua</h2>
-       <div class="w-16 h-1.5 rounded-full mt-4 accent-line"></div><!-- ðŸ“– [DESKRIPSI TENTANG KAMI - UBAH PENJELASAN PANJANG TENTANG SEKOLAH DI SINI] -->
+       <div class="w-16 h-1.5 rounded-full mt-4 accent-line"></div>
        <p id="about-text" class="mt-6 text-gray-600 leading-relaxed text-base">PKBM Ristek Nusantara Jaya adalah lembaga pendidikan nonformal yang berkomitmen memberikan layanan pendidikan kesetaraan (Paket A, B, dan C) bagi masyarakat yang membutuhkan. Dengan tenaga pengajar profesional dan kurikulum yang terstruktur, kami memastikan setiap peserta didik mendapatkan pendidikan berkualitas setara dengan pendidikan formal.</p>
-       <div class="grid grid-cols-2 gap-4 mt-8">
-        <div class="flex items-start gap-3">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #ecfeff;">
-          <i data-lucide="target" style="width:20px;height:20px;color:#0891b2;"></i>
-         </div>
-         <div>
-          <div class="font-semibold text-sm" style="color: #0c4a6e;">
-           Visi
+       <div class="grid grid-cols-1 gap-6 mt-10">
+        <div class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, #ecfeff, #cffafe); border: 2px solid #06b6d4;">
+         <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-10" style="background-color: #06b6d4;"></div>
+         <div class="relative z-10 flex items-start gap-4">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+           <i data-lucide="users" style="width:24px;height:24px;color:white;"></i>
           </div>
-          <div class="text-xs text-gray-600 mt-1 leading-snug">
-           Mewujudkan warga belajar/lulusan yang berakhlak mulia, cerdas, berwawasan global, terampil dan mandiri.
-          </div>
-         </div>
-        </div>
-        <div class="flex items-start gap-3">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #fffbeb;">
-          <i data-lucide="rocket" style="width:20px;height:20px;color:#f59e0b;"></i>
-         </div>
-         <div>
-          <div class="font-semibold text-sm" style="color: #0c4a6e;">
-           Misi 1
-          </div>
-          <div class="text-xs text-gray-600 mt-1">
-           Meningkatkan ketaqwaan dan akhlak mulia sesuai agama.
+          <div class="flex-1">
+           <h4 class="font-bold text-base" style="color: #0891b2;">1000+ Alumni Sukses</h4>
+           <p class="text-sm text-gray-600 mt-2 leading-relaxed">Ribuan lulusan kami telah berhasil melanjutkan ke jenjang pendidikan lebih tinggi dan meraih kesuksesan di berbagai bidang kerja.</p>
+           <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full" style="background-color: #cffafe; color: #0891b2; font-weight: 600;">Terukur</span> <span class="text-xs px-2 py-1 rounded-full" style="background-color: #cffafe; color: #0891b2; font-weight: 600;">Nyata</span>
+           </div>
           </div>
          </div>
         </div>
-        <div class="flex items-start gap-3">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #ecfeff;">
-          <i data-lucide="book" style="width:20px;height:20px;color:#0891b2;"></i>
-         </div>
-         <div>
-          <div class="font-semibold text-sm" style="color: #0c4a6e;">
-           Misi 2
+        <div class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #f59e0b;">
+         <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-10" style="background-color: #f59e0b;"></div>
+         <div class="relative z-10 flex items-start gap-4">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+           <i data-lucide="award" style="width:24px;height:24px;color:white;"></i>
           </div>
-          <div class="text-xs text-gray-600 mt-1">
-           Keterampilan bahasa, komputer &amp; berwirausaha.
-          </div>
-         </div>
-        </div>
-        <div class="flex items-start gap-3">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #fffbeb;">
-          <i data-lucide="lightbulb" style="width:20px;height:20px;color:#f59e0b;"></i>
-         </div>
-         <div>
-          <div class="font-semibold text-sm" style="color: #0c4a6e;">
-           Misi 3
-          </div>
-          <div class="text-xs text-gray-600 mt-1">
-           Strategi pembelajaran fleksibel dan netral.
+          <div class="flex-1">
+           <h4 class="font-bold text-base" style="color: #b45309;">Pendidikan Berkualitas</h4>
+           <p class="text-sm text-gray-600 mt-2 leading-relaxed">Tenaga pengajar profesional, kurikulum nasional yang terstruktur, dan metode pembelajaran modern untuk hasil maksimal.</p>
+           <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full" style="background-color: #fef3c7; color: #b45309; font-weight: 600;">Profesional</span> <span class="text-xs px-2 py-1 rounded-full" style="background-color: #fef3c7; color: #b45309; font-weight: 600;">Terpercaya</span>
+           </div>
           </div>
          </div>
         </div>
-        <div class="flex items-start gap-3 lg:col-span-2">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #ecfeff;">
-          <i data-lucide="star" style="width:20px;height:20px;color:#0891b2;"></i>
-         </div>
-         <div>
-          <div class="font-semibold text-sm" style="color: #0c4a6e;">
-           Misi 4
+        <div class="rounded-2xl p-6 relative overflow-hidden" style="background: linear-gradient(135deg, #f0f4ff, #e0e7ff); border: 2px solid #8b5cf6;">
+         <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-10" style="background-color: #8b5cf6;"></div>
+         <div class="relative z-10 flex items-start gap-4">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+           <i data-lucide="zap" style="width:24px;height:24px;color:white;"></i>
           </div>
-          <div class="text-xs text-gray-600 mt-1">
-           Membentuk warga belajar produktif &amp; berdaya saing melalui konseling &amp; pembelajaran keterampilan.
+          <div class="flex-1">
+           <h4 class="font-bold text-base" style="color: #6d28d9;">Fleksibel &amp; Inklusif</h4>
+           <p class="text-sm text-gray-600 mt-2 leading-relaxed">Jadwal yang dapat disesuaikan untuk bekerja, sistem pembelajaran netral, dan terbuka untuk semua kalangan tanpa diskriminasi.</p>
+           <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full" style="background-color: #e0e7ff; color: #6d28d9; font-weight: 600;">Fleksibel</span> <span class="text-xs px-2 py-1 rounded-full" style="background-color: #e0e7ff; color: #6d28d9; font-weight: 600;">Inklusif</span>
+           </div>
           </div>
          </div>
         </div>
@@ -249,23 +263,25 @@
       </div>
       <div class="relative">
        <div class="rounded-3xl p-8 sm:p-10" style="background: linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4); position: relative; overflow: hidden;">
-        <div class="absolute inset-0 opacity-10" style="background: url('data:image/svg+xml,%3Csvg width=%2260%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%270.3%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="absolute inset-0 opacity-10" style="background: url('data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%270.3%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         <div class="relative z-10">
-         Sambutan Kepala Sekolah
-        </div>
-        <blockquote class="text-white text-lg leading-relaxed font-medium italic">
-         "Kami percaya bahwa setiap individu berhak mendapatkan pendidikan yang layak. Di PKBM Ristek Nusantara Jaya, kami berkomitmen untuk membuka pintu kesempatan bagi semua."
-        </blockquote>
-        <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/20"><img id="headmaster-photo" src="https://i.imgur.com/blC1E40.png" alt="Foto Kepala Sekolah" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid white;" loading="lazy" onerror="console.error('Photo failed to load:', this.src); this.style.display='none'; document.getElementById('headmaster-initial').style.display='flex';">
-         <div id="headmaster-initial" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white" style="background-color: #f59e0b; display: none;">
-          K
+         <div class="text-white font-semibold text-sm">
+          Sambutan Kepala Sekolah
          </div>
-         <div>
-          <div class="text-white font-semibold">
-           Kepala PKBM
+         <blockquote class="text-white text-lg leading-relaxed font-medium italic mt-4">
+          "Kami percaya bahwa setiap individu berhak mendapatkan pendidikan yang layak. Di PKBM Ristek Nusantara Jaya, kami berkomitmen untuk membuka pintu kesempatan bagi semua."
+         </blockquote>
+         <div class="flex items-center gap-3 mt-6 pt-6 border-t border-white/20"><img id="headmaster-photo" src="https://i.imgur.com/blC1E40.png" alt="Foto Kepala Sekolah" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid white;" loading="lazy" onerror="console.error('Photo failed to load:', this.src); this.style.display='none'; document.getElementById('headmaster-initial').style.display='flex';">
+          <div id="headmaster-initial" class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white" style="background-color: #f59e0b; display: none;">
+           K
           </div>
-          <div class="text-white/60 text-sm">
-           Ristek Nusantara Jaya
+          <div>
+           <div class="text-white font-semibold">
+            Kepala PKBM
+           </div>
+           <div class="text-white/60 text-sm">
+            Ristek Nusantara Jaya
+           </div>
           </div>
          </div>
         </div>
@@ -274,26 +290,29 @@
       </div>
      </div>
     </div>
-   </section><!-- Program -->
-   <section id="program" class="py-16 sm:py-24" style="background-color: #ffffff;">
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🎓 AREA 4: PROGRAM PENDIDIKAN (Paket A, B, C, Homeschooling, Kursus)
+        Bagian: 3 Paket Utama, Program Unggulan (Homeschooling, Bahasa Inggris, Komputer, Al-Qur'an)
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Program Pendidikan -->
+   <section id="program" class="py-16 sm:py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-14">
-      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Program Kami</span>
-      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 gradient-text">Program Pendidikan Kesetaraan</h2>
-      <div class="w-16 h-1.5 rounded-full mt-4 mx-auto accent-line"></div>
-     </div>
-     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Paket A -->
-      <div class="card-hover rounded-2xl overflow-hidden shadow-lg transition-all relative" style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,249,255,0.95)); border: 1px solid rgba(139, 92, 246, 0.2);">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #10b981;">📚 Program Kami</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold mt-3 bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">Semua Layanan Pendidikan Komprehensif</h2>
+      <div class="w-20 h-1.5 rounded-full mt-5 mx-auto" style="background: linear-gradient(90deg, #10b981, #06b6d4, #0891b2);"></div>
+      <p class="text-gray-600 text-base mt-4 max-w-3xl mx-auto leading-relaxed">Kami menyediakan solusi pendidikan lengkap dari jenjang SD hingga SMA, plus program pengembangan skill profesional dengan sistem pembelajaran fleksibel untuk semua kalangan</p>
+     </div><!-- Paket A, B, C -->
+     <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="card-hover rounded-2xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,249,255,0.95)); border: 1px solid rgba(139, 92, 246, 0.2);">
        <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold text-white" style="background-color: #06b6d4;">
-        Populer
+        Sekolah NonFormal Berkwalitas
        </div>
        <div class="p-2">
         <div class="rounded-xl p-6 text-center" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">
          <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center text-2xl font-extrabold text-white" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
-          A
+          🏫
          </div>
-         <h3 class="font-display text-xl font-bold mt-4" style="color: #0c6e28;">Paket A</h3>
+         <h3 class="font-display text-xl font-bold mt-4" style="color: #0c4a6e;">Paket A</h3>
          <p class="text-sm text-gray-500 mt-1">Setara SD / MI</p>
         </div>
        </div>
@@ -305,7 +324,7 @@
          <li class="flex items-center gap-2 text-sm text-gray-600"><i data-lucide="check-circle" style="width:16px;height:16px;color:#06b6d4;flex-shrink:0;"></i> Jadwal fleksibel</li>
         </ul><a href="#kontak" class="block mt-6 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:scale-105" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">Daftar Paket A</a>
        </div>
-      </div><!-- Paket B -->
+      </div>
       <div class="card-hover rounded-2xl overflow-hidden shadow-lg relative" style="background: white; border: 2px solid #f59e0b;">
        <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold text-white" style="background-color: #f59e0b;">
         Populer
@@ -313,7 +332,7 @@
        <div class="p-2">
         <div class="rounded-xl p-6 text-center" style="background: linear-gradient(135deg, #fffbeb, #fef3c7);">
          <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center text-2xl font-extrabold text-white" style="background-color: #f59e0b;">
-          B
+          🎓
          </div>
          <h3 class="font-display text-xl font-bold mt-4" style="color: #0c4a6e;">Paket B</h3>
          <p class="text-sm text-gray-500 mt-1">Setara SMP / MTs</p>
@@ -327,15 +346,15 @@
          <li class="flex items-center gap-2 text-sm text-gray-600"><i data-lucide="check-circle" style="width:16px;height:16px;color:#f59e0b;flex-shrink:0;"></i> Bimbingan intensif</li>
         </ul><a href="#kontak" class="block mt-6 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90" style="background-color: #f59e0b;">Daftar Paket B</a>
        </div>
-      </div><!-- Paket C -->
+      </div>
       <div class="card-hover rounded-2xl overflow-hidden shadow-md relative" style="background: white; border: 1px solid #e0f2fe;">
        <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold text-white" style="background-color: #0c4a6e;">
-        Populer
+        Cepat Lulus
        </div>
        <div class="p-2">
         <div class="rounded-xl p-6 text-center" style="background: linear-gradient(135deg, #ecfeff, #cffafe);">
          <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center text-2xl font-extrabold text-white" style="background-color: #0c4a6e;">
-          C
+          📚
          </div>
          <h3 class="font-display text-xl font-bold mt-4" style="color: #0c4a6e;">Paket C</h3>
          <p class="text-sm text-gray-500 mt-1">Setara SMA / MA</p>
@@ -350,9 +369,74 @@
         </ul><a href="#kontak" class="block mt-6 text-center py-2.5 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style="background-color: #ecfeff; color: #0891b2;">Daftar Paket C</a>
        </div>
       </div>
+     </div><!-- Program Unggulan Lainnya -->
+     <div>
+      <div class="text-center mb-10">
+       <h3 class="font-display text-2xl sm:text-3xl font-extrabold" style="color: #0c4a6e;">Program Unggulan Lainnya</h3>
+       <p class="text-gray-600 mt-2 text-sm">Selain program kesetaraan, kami juga menyediakan program pengembangan skill dan bimbingan khusus</p>
+      </div><!-- Homeschooling & Bahasa Inggris -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-6">
+       <div class="card-hover rounded-2xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(20,184,166,0.05), rgba(20,184,166,0.02)); border: 1px solid #ccfbf1;">
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+           <i data-lucide="home" style="width:24px;height:24px;color:white;"></i>
+          </div><span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background-color: #14b8a6;">Homeschooling</span>
+         </div>
+         <h3 class="font-bold text-lg" style="color: #0c4a6e;">Homeschooling SD, SMP, SMA</h3>
+         <p class="text-sm text-gray-600 mt-3 leading-relaxed">Program pendidikan formal bagi anak usia SD, SMP, dan SMA di luar sekolah. Fleksibilitas waktu dan tempat belajar, kurikulum yang disesuaikan, dan pendampingan belajar yang personal untuk setiap anak.</p>
+         <div class="flex flex-wrap gap-2 mt-4"><span class="text-xs px-3 py-1 rounded-full" style="background-color: #ccfbf1; color: #0d9488;">Fleksibel</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #ccfbf1; color: #0d9488;">Personal</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #ccfbf1; color: #0d9488;">Modern</span>
+         </div><a href="#kontak" class="block mt-4 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">Daftar Homeschooling</a>
+        </div>
+       </div>
+       <div class="card-hover rounded-2xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(139,92,246,0.02)); border: 1px solid #e9d5ff;">
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+           <i data-lucide="globe" style="width:24px;height:24px;color:white;"></i>
+          </div><span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background-color: #8b5cf6;">Kursus</span>
+         </div>
+         <h3 class="font-bold text-lg" style="color: #0c4a6e;">Kursus Bahasa Inggris (TOEFL)</h3>
+         <p class="text-sm text-gray-600 mt-3 leading-relaxed">Meningkatkan kemampuan berkomunikasi dan menulis dalam bahasa Inggris dengan efektif. Tersedia berbagai tingkatan kelas dari beginner hingga advanced dengan metode belajar interaktif dan menyenangkan.</p>
+         <div class="flex flex-wrap gap-2 mt-4"><span class="text-xs px-3 py-1 rounded-full" style="background-color: #e9d5ff; color: #7c3aed;">Beginner</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #e9d5ff; color: #7c3aed;">TOEFL</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #e9d5ff; color: #7c3aed;">Advanced</span>
+         </div><a href="#kontak" class="block mt-4 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">Daftar Kursus Bahasa Inggris</a>
+        </div>
+       </div>
+      </div><!-- Kursus Komputer & Al-Qur'an -->
+      <div class="grid lg:grid-cols-2 gap-6">
+       <div class="card-hover rounded-2xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(236,72,153,0.05), rgba(236,72,153,0.02)); border: 1px solid #fbcfe8;">
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+           <i data-lucide="monitor" style="width:24px;height:24px;color:white;"></i>
+          </div><span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background-color: #ec4899;">Kursus</span>
+         </div>
+         <h3 class="font-bold text-lg" style="color: #0c4a6e;">Kursus Komputer</h3>
+         <p class="text-sm text-gray-600 mt-3 leading-relaxed">Mengajarkan keterampilan komputer yang dibutuhkan di dunia kerja. Termasuk Microsoft Office, desain grafis, dan Excel. Cocok untuk pemula maupun yang ingin meningkatkan kemampuan komputer mereka.</p>
+         <div class="flex flex-wrap gap-2 mt-4"><span class="text-xs px-3 py-1 rounded-full" style="background-color: #fbcfe8; color: #be185d;">Microsoft Office</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #fbcfe8; color: #be185d;">Desain</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #fbcfe8; color: #be185d;">Excel</span>
+         </div><a href="#kontak" class="block mt-4 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">Daftar Kursus Komputer</a>
+        </div>
+       </div>
+       <div class="card-hover rounded-2xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(239,68,68,0.05), rgba(239,68,68,0.02)); border: 1px solid #fee2e2;">
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #dc2626, #ef4444);">
+           <i data-lucide="book" style="width:24px;height:24px;color:white;"></i>
+          </div><span class="text-xs font-bold px-2 py-1 rounded-full text-white" style="background-color: #dc2626;">Program</span>
+         </div>
+         <h3 class="font-bold text-lg" style="color: #0c4a6e;">Belajar Al-Qur'an</h3>
+         <p class="text-sm text-gray-600 mt-3 leading-relaxed">Tersedia kelas tahsin untuk belajar membaca Al-Qur'an dengan benar dan kelas Tahfidz untuk menghafal Al-Qur'an. Dipimpin oleh ustadz/ah bersertifikat 30 Juz dengan sanad yang jelas dan terpercaya.</p>
+         <div class="flex flex-wrap gap-2 mt-4"><span class="text-xs px-3 py-1 rounded-full" style="background-color: #fee2e2; color: #991b1b;">Tahsin</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #fee2e2; color: #991b1b;">Tahfidz</span> <span class="text-xs px-3 py-1 rounded-full" style="background-color: #fee2e2; color: #991b1b;">Bersertifikat</span>
+         </div><a href="#kontak" class="block mt-4 text-center py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #dc2626, #ef4444);">Daftar Al-Qur'an</a>
+        </div>
+       </div>
+      </div>
      </div>
     </div>
-   </section><!-- Fasilitas -->
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🏛️ AREA 5: FASILITAS (Daftar lengkap fasilitas yang tersedia)
+        Bagian: Lab Komputer, Perpustakaan, WiFi, Ruang Kelas
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Fasilitas -->
    <section id="fasilitas" class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-14">
@@ -391,7 +475,537 @@
       </div>
      </div>
     </div>
-   </section><!-- Kontak -->
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🎯 AREA 6: VISI, MISI & TUJUAN (Fondasi dan arah sekolah)
+        Bagian: 1 Visi Card, 1 Misi Card, 5 Tujuan Strategis
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Visi Misi & Tujuan -->
+   <section id="tujuan" class="py-16 sm:py-24" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e1b4b 100%); position: relative; overflow: hidden;">
+    <div class="absolute inset-0 opacity-10" style="background: url('data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%270.05%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-amber-300 mb-4" style="background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3);"> <i data-lucide="sparkles" style="width:16px;height:16px;"></i> Komitmen Kami </span>
+      <h2 class="font-display text-3xl sm:text-5xl font-extrabold mt-3 text-white">Visi, Misi &amp; Tujuan</h2>
+      <p class="text-white/60 mt-3 text-lg max-w-2xl mx-auto">Fondasi kuat yang mengarahkan setiap langkah kami dalam memberikan pendidikan berkualitas</p>
+      <div class="flex gap-2 justify-center mt-6">
+       <div class="w-2 h-2 rounded-full" style="background-color: #06b6d4;"></div>
+       <div class="w-2 h-2 rounded-full" style="background-color: #f59e0b;"></div>
+       <div class="w-2 h-2 rounded-full" style="background-color: #06b6d4;"></div>
+      </div>
+     </div><!-- Visi Misi Cards -->
+     <div class="grid lg:grid-cols-2 gap-8 mb-16">
+      <div class="group rounded-3xl p-1 relative" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+       <div class="rounded-3xl p-8 h-full" style="background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,58,137,0.95));">
+        <div class="flex items-start justify-between mb-6">
+         <div>
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(6,182,212,0.1)); border: 2px solid #06b6d4;">
+           <i data-lucide="compass" style="width:32px;height:32px;color:#06b6d4;"></i>
+          </div>
+          <h3 class="font-display text-2xl font-extrabold text-white">Visi</h3>
+         </div>
+        </div>
+        <p class="text-white/80 leading-relaxed text-base">Mewujudkan warga belajar/lulusan yang berakhlak mulia, cerdas, berwawasan global, terampil dan mandiri.</p>
+        <div class="mt-6 pt-6 border-t" style="border-color: rgba(255,255,255,0.1);">
+         <div class="flex items-center gap-2 text-white/60 text-sm"><i data-lucide="check-circle" style="width:16px;height:16px;color:#06b6d4;"></i> Panduan strategis institusi
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="group rounded-3xl p-1 relative" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+       <div class="rounded-3xl p-8 h-full" style="background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,58,137,0.95));">
+        <div class="flex items-start justify-between mb-6">
+         <div>
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.1)); border: 2px solid #f59e0b;">
+           <i data-lucide="zap" style="width:32px;height:32px;color:#f59e0b;"></i>
+          </div>
+          <h3 class="font-display text-2xl font-extrabold text-white">Misi</h3>
+         </div>
+        </div>
+        <ul class="space-y-3">
+         <li class="flex items-start gap-3 text-white/80 text-sm leading-relaxed"><span style="color: #f59e0b;">✓</span> <span>Meningkatkan ketaqwaan dan akhlak mulia sesuai agama</span></li>
+         <li class="flex items-start gap-3 text-white/80 text-sm leading-relaxed"><span style="color: #f59e0b;">✓</span> <span>Keterampilan bahasa, komputer &amp; berwirausaha</span></li>
+         <li class="flex items-start gap-3 text-white/80 text-sm leading-relaxed"><span style="color: #f59e0b;">✓</span> <span>Strategi pembelajaran fleksibel dan netral</span></li>
+         <li class="flex items-start gap-3 text-white/80 text-sm leading-relaxed"><span style="color: #f59e0b;">✓</span> <span>Membentuk warga belajar produktif &amp; berdaya saing</span></li>
+        </ul>
+       </div>
+      </div>
+     </div><!-- Tujuan Title -->
+     <div class="text-center mb-10">
+      <h3 class="font-display text-2xl font-bold text-white">5 Tujuan Strategis</h3>
+      <p class="text-white/60 text-sm mt-2">Roadmap kesuksesan pendidikan untuk semua</p>
+     </div><!-- Tujuan Grid -->
+     <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="group rounded-2xl p-0.5 relative card-hover" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+       <div class="rounded-2xl p-6 h-full flex flex-col" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,58,137,0.9));">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+         <i data-lucide="book-open" style="width:24px;height:24px;color:white;"></i>
+        </div>
+        <h4 class="font-bold text-center text-white text-sm mb-3">Pendidikan Sepanjang Hayat</h4>
+        <p class="text-xs text-white/70 text-center leading-snug flex-1">Terpenuhi pelayanan pendidikan sepanjang hayat melalui jalur pendidikan non formal</p>
+       </div>
+      </div>
+      <div class="group rounded-2xl p-0.5 relative card-hover" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+       <div class="rounded-2xl p-6 h-full flex flex-col" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,58,137,0.9));">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+         <i data-lucide="award" style="width:24px;height:24px;color:white;"></i>
+        </div>
+        <h4 class="font-bold text-center text-white text-sm mb-3">Prestasi Akademik</h4>
+        <p class="text-xs text-white/70 text-center leading-snug flex-1">Terpenuhi prestasi peserta didik melalui akademik maupun non akademik</p>
+       </div>
+      </div>
+      <div class="group rounded-2xl p-0.5 relative card-hover" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+       <div class="rounded-2xl p-6 h-full flex flex-col" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,58,137,0.9));">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+         <i data-lucide="crown" style="width:24px;height:24px;color:white;"></i>
+        </div>
+        <h4 class="font-bold text-center text-white text-sm mb-3">PKBM Unggulan</h4>
+        <p class="text-xs text-white/70 text-center leading-snug flex-1">Menjadi PKBM unggulan di lingkungan masyarakat</p>
+       </div>
+      </div>
+      <div class="group rounded-2xl p-0.5 relative card-hover" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+       <div class="rounded-2xl p-6 h-full flex flex-col" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,58,137,0.9));">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+         <i data-lucide="brain" style="width:24px;height:24px;color:white;"></i>
+        </div>
+        <h4 class="font-bold text-center text-white text-sm mb-3">IPTEK &amp; Akhlak</h4>
+        <p class="text-xs text-white/70 text-center leading-snug flex-1">Terpenuhinya kualitas peserta didik melalui ilmu dan teknologi (IPTEK) dan berakhlakul karimah</p>
+       </div>
+      </div>
+      <div class="group rounded-2xl p-0.5 relative card-hover" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+       <div class="rounded-2xl p-6 h-full flex flex-col" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,58,137,0.9));">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl mx-auto mb-4 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+         <i data-lucide="heart-handshake" style="width:24px;height:24px;color:white;"></i>
+        </div>
+        <h4 class="font-bold text-center text-white text-sm mb-3">Kualitas Layanan</h4>
+        <p class="text-xs text-white/70 text-center leading-snug flex-1">Terpenuhinya kualitas lembaga untuk melayani kebutuhan peserta didik dan masyarakat yang memerlukan</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        📅 AREA 7: JADWAL UJIAN & EVENT (Tanggal-tanggal penting)
+        Bagian: 6 Kartu Event (Ujian Paket A/B/C, Wisuda, Pendaftaran, Tahun Ajaran)
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Jadwal Penting -->
+   <section id="jadwal" class="py-16 sm:py-24" style="background: white;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-14">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Penting</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 gradient-text">Jadwal Ujian &amp; Event TA 2025/2026</h2>
+      <div class="w-16 h-1.5 rounded-full mt-4 mx-auto accent-line"></div>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.05)); border: 1px solid #cffafe;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #0891b2, #06b6d4);">
+         📝
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #0891b2;">UJIAN</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Ujian Akhir Paket A</h4>
+       <p class="text-xs text-gray-600 mt-0.5">UPK Paket A (Setara SD) Kelas 6</p>
+       <p class="text-xs text-gray-600 mt-0.5">Semester Genap Paket A (Setara SD) Kelas 1-5</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #cffafe;">
+        <p class="text-xs text-gray-500">📅 <strong> UPK  Mei 2026 Kelas 6</strong></p>
+        <p class="text-xs text-gray-500">📅 <strong> Semester Genap  Juni 2026 Kelas 1-5</strong></p>
+       </div>
+      </div>
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(249,158,11,0.1), rgba(249,158,11,0.05)); border: 1px solid #fef3c7;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+         ✏️
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #f59e0b;">UJIAN</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Ujian Akhir Paket B</h4>
+       <p class="text-xs text-gray-600 mt-0.5">UPK Paket B (Setara SMP) Kelas 9</p>
+       <p class="text-xs text-gray-600 mt-0.5">Semester Genap Paket B (Setara SMP) Kelas 7-8</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #fef3c7;">
+        <p class="text-xs text-gray-500">📅 <strong> UPK  Mei 2026 kelas 9</strong></p>
+        <p class="text-xs text-gray-500">📅 <strong> Semester Genap Juni 2026 KELAS 7-8</strong></p>
+       </div>
+      </div>
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.05)); border: 1px solid #e9d5ff;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+         📚
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #8b5cf6;">ANBK</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Ujian Akhir Paket C</h4>
+       <p class="text-xs text-gray-600 mt-0.5">UPK Paket C (Setara SMA) Kelas 12 IPA-IPS</p>
+       <p class="text-xs text-gray-600 mt-0.5">Semester Genap Paket C (Setara SMA) Kelas 10-11 IPA-IPS</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #e9d5ff;">
+        <p class="text-xs text-gray-500">📅 <strong>UPK  April 2026 Kelas 12 </strong></p>
+        <p class="text-xs text-gray-500">📅 <strong>Semester Genap  April 2026 Kelas 10-11 </strong></p>
+       </div>
+      </div>
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(236,72,153,0.1), rgba(236,72,153,0.05)); border: 1px solid #fbcfe8;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+         🏆
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #ec4899;">EVENT</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Perpisahan Angkatan 2025/2026</h4>
+       <p class="text-xs text-gray-600 mt-0.5">Upacara Kelulusan Siswa Paket A, B dan C</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #fbcfe8;">
+        <p class="text-xs text-gray-500">📅 <strong> Mei 2026 Pengumuman Kelulusan Paket C Kelas Akhir</strong></p>
+        <p class="text-xs text-gray-500">📅 <strong> Juni 2026 Pengumuman Kelulusan Paket B dan A Kelas Akhir</strong></p>
+       <p class="text-xs text-gray-500">📅 <strong> Juli 2026 Kenaikan Kelas Paket A,B dan C Kelas Awal dan Tengah</strong></p>
+      </div>
+      </div>
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(20,184,166,0.1), rgba(20,184,166,0.05)); border: 1px solid #ccfbf1;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+         🎓
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #14b8a6;">PENDAFTARAN</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Penerimaan Siswa Baru (PMB) TA 2026/2027</h4>
+       <p class="text-xs text-gray-600 mt-0.5">Pembukaan Pendaftaran Siswa Baru</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #ccfbf1;">
+        <p class="text-xs text-gray-500">📅 <strong>   2 April - 20 Desember 2026 berdasarkan kuota jumlah siswa (daftar diawal sebelum kuota habis).</strong></p>
+       </div>
+      </div>
+      <div class="rounded-2xl p-5 overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(245,158,11,0.05)); border: 1px solid #fed7aa;">
+       <div class="flex items-start justify-between mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-base font-bold text-white" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+         📖
+        </div><span class="px-2 py-0.5 rounded-full text-xs font-bold text-white" style="background-color: #d97706;">TAHUN AJARAN</span>
+       </div>
+       <h4 class="font-bold text-sm" style="color: #0c4a6e;">Tahun Ajaran 2026/2027</h4>
+       <p class="text-xs text-gray-600 mt-0.5">Dimulainya kegiatan belajar mengajar</p>
+       <div class="mt-3 pt-3 border-t" style="border-color: #fed7aa;">
+        <p class="text-xs text-gray-500">📅 <strong> September 2026</strong></p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        ⭐ AREA 8: TESTIMONI ALUMNI (Cerita sukses dari lulusan)
+        Bagian: 5 Kartu Testimoni dengan Rating Bintang
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Testimoni Alumni -->
+   <section id="testimoni" class="py-16 sm:py-24" style="background: linear-gradient(135deg, #1e293b 0%, #0f766e 50%, #1e3a8a 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-14">
+      <span class="text-sm font-semibold tracking-wider uppercase text-amber-200">Alumni</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 text-white">Testimoni Alumni Kami</h2>
+      <div class="w-16 h-1.5 rounded-full mt-4 mx-auto" style="background: linear-gradient(90deg, #06b6d4, #f59e0b);"></div>
+     </div>
+     <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #0891b2, #06b6d4);">
+         AR
+        </div>
+        <div>
+         <h4 class="font-bold text-white text-xs">Andi Ramadan</h4>
+         <p class="text-xs text-white/60">Paket C 2023</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"Terima kasih PKBM RNJ! Ijazah dari sini membuka pintu kuliah impian saya."</p>
+      </div>
+      <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+         SR
+        </div>
+        <div>
+         <h4 class="font-bold text-white text-xs">Siti Rofidah</h4>
+         <p class="text-xs text-white/60">Paket B 2024</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"Guru-guru sangat sabar. Belajar sambil kerja jadi lancar!"</p>
+      </div>
+      <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+         BA
+        </div>
+        <div>
+         <h4 class="font-bold text-white text-xs">Budi Arianto</h4>
+         <p class="text-xs text-white/60">Paket A 2022</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"Program fleksibel PKBM RNJ pilihan sempurna untuk saya! Kalian harus pilih RNJ untuk solusi pendidikan"</p>
+      </div>
+      <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+         NR
+        </div>
+        <div>
+         <h4 class="font-bold text-white text-xs">Nur Rahman</h4>
+         <p class="text-xs text-white/60">Paket C 2025</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"Fasilitas lengkap dan biaya terjangkau. Rekomendasi deh pokoknya!"</p>
+      </div>
+      <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+         DW
+        </div>
+        <div>
+         <h4 class="font-bold text-white text-xs">Dewi Wijaya</h4>
+         <p class="text-xs text-white/60">Paket B 2018</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"Lulus dengan nilai bagus! Siap melanjutkan SMA.  Terima Kasih untuk guru guru ku di RNJ"</p>
+       </div>
+       <div class="rounded-xl p-4 backdrop-blur-md" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+       <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+         AK
+      </div>
+     <div>
+      <h4 class="font-bold text-white text-xs">Arum Kusuma Sari</h4>
+         <p class="text-xs text-white/60">Paket C 2019</p>
+        </div>
+       </div>
+       <div class="flex gap-0.5 mb-2">
+        <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i> <i data-lucide="star" style="width:12px;height:12px;color:#fbbf24;fill:#fbbf24;"></i>
+       </div>
+       <p class="text-white/80 text-xs italic leading-snug">"RNJ telah membuat diri saya sampai ke tujuan akhir yaitu terwujudnya cita cita saya, Terima Kasih RNJ berkat mu Aku bisa kuliah ke Universitas Negeri"</p>
+      </div> 
+       </div>
+        </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🖼️ AREA 9: GALERI KEGIATAN (Portfolio visual aktivitas sekolah)
+        Bagian: 8 Kartu Galeri dengan Emoji (Wishuda, Pembelajaran, Komunitas, Prestasi, Komputer, Seni, Buku, Bintang)
+        ⚙️ CATATAN: Area ini menampilkan placeholder emoji. Anda bisa:
+           1. Ganti dengan GAMBAR NYATA: Upload foto kegiatan ke Imgur.com (free), copy URL, ganti src di img tag
+           2. Tetap emoji: Tinggalkan emoji yang ada
+           3. Custom ikon: Ganti emoji dengan ikon Lucide (data-lucide="icon-name")
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Galeri Kegiatan -->
+   <section id="galeri" class="py-16 sm:py-24" style="background: white;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-14">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Media</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2 gradient-text">Galeri Kegiatan</h2>
+      <div class="w-16 h-1.5 rounded-full mt-4 mx-auto accent-line"></div>
+     </div><!-- Carousel Container -->
+     <div class="relative">
+      <!-- Carousel Wrapper -->
+      <div class="overflow-hidden rounded-2xl">
+       <div id="galeri-carousel" class="flex gap-4 sm:gap-6 transition-transform duration-500 ease-out">
+        <!-- Item 1 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #06b6d4, #0891b2); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           <img src="https://i.imgur.com/IvhOU8R.jpeg" alt="Wisuda" class="w-full h-full object-cover object-top">
+          </div>
+         </div>
+         <p id="galeri-1-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Wisuda Angkatan</p>
+        </div><!-- Item 2 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #f59e0b, #fbbf24); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           📚
+          </div>
+         </div>
+         <p id="galeri-2-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Pembelajaran Aktif</p>
+        </div><!-- Item 3 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #ec4899, #f43f5e); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           👥
+          </div>
+         </div>
+         <p id="galeri-3-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Komunitas Belajar</p>
+        </div><!-- Item 4 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           🏆
+          </div>
+         </div>
+         <p id="galeri-4-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Prestasi Siswa</p>
+        </div><!-- Item 5 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           💻
+          </div>
+         </div>
+         <p id="galeri-5-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Lab Komputer</p>
+        </div><!-- Item 6 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #d97706, #f59e0b); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           🎨
+          </div>
+         </div>
+         <p id="galeri-6-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Seni &amp; Budaya</p>
+        </div><!-- Item 7 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           📖
+          </div>
+         </div>
+         <p id="galeri-7-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Perpustakaan</p>
+        </div><!-- Item 8 -->
+        <div class="galeri-item flex-shrink-0 w-full sm:w-1/2 lg:w-1/4">
+         <div class="rounded-2xl overflow-hidden card-hover h-40 sm:h-48" style="background: linear-gradient(135deg, #ef4444, #f87171); position: relative;">
+          <div class="absolute inset-0 flex items-center justify-center text-4xl">
+           🌟
+          </div>
+         </div>
+         <p id="galeri-8-title" class="font-semibold text-center mt-3 text-sm" style="color: #0c4a6e;">Achievement Star</p>
+        </div>
+       </div>
+      </div><!-- Navigation Buttons --> <button id="galeri-prev" onclick="slideGaleri(-1)" class="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background-color: #0891b2;"> <i data-lucide="chevron-left" style="width:20px;height:20px;color:white;"></i> </button> <button id="galeri-next" onclick="slideGaleri(1)" class="absolute right-0 top-1/3 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background-color: #0891b2;"> <i data-lucide="chevron-right" style="width:20px;height:20px;color:white;"></i> </button>
+     </div><!-- Dots/Indicator -->
+     <div id="galeri-dots" class="flex justify-center gap-2 mt-6"></div>
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        ❓ AREA 10: FAQ / PERTANYAAN SERING DIAJUKAN (Jawaban umum dari calon peserta)
+        Bagian: 13 Accordion/Collapse Questions dengan Jawaban (bisa dibuka-tutup)
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- FAQ -->
+   <section id="faq" class="py-16 sm:py-24" style="background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-14">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Bantuan</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2" style="color: #0c4a6e;">Pertanyaan Sering Diajukan</h2>
+      <div class="w-16 h-1 rounded-full mt-4 mx-auto" style="background-color: #f59e0b;"></div>
+     </div>
+     <div class="space-y-4">
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Bagaimana cara mendapatkan informasi lengkap tentang program?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Anda dapat menghubungi kami melalui WhatsApp, telepon, atau email yang tertera di halaman kontak. Tim kami siap memberikan penjelasan lengkap tentang setiap program pendidikan dan kursus yang kami tawarkan.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apa saja syarat pendaftaran untuk setiap program?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Syarat pendaftaran bervariasi tergantung pada program yang dipilih. Secara umum, Anda memerlukan dokumen identitas, akta kelahiran/sertifikat kelahiran, dan ijazah terakhir. Hubungi kami untuk detail lengkap syarat khusus setiap program.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Bisakah saya belajar sambil bekerja?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Tentu! Semua program kami dirancang dengan jadwal yang fleksibel, terutama Paket A, B, C dan Homeschooling. Anda dapat mengatur jadwal belajar sesuai dengan waktu kerja Anda. Tim kami siap membantu Anda menemukan jadwal terbaik.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apakah ada program khusus untuk anak-anak?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Ya, kami menawarkan program Homeschooling untuk SD, SMP, dan SMA dengan pendampingan personal yang disesuaikan dengan kebutuhan setiap anak. Metode pembelajaran kami interaktif dan menyenangkan untuk meningkatkan minat belajar.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apakah tersedia kursus sambilan untuk meningkatkan skill?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Tentu! Kami menawarkan berbagai kursus sambilan seperti Bahasa Inggris (TOEFL), Kursus Komputer (Office, Desain, Coding), dan Belajar Al-Qur'an (Tahsin &amp; Tahfidz). Jadwal fleksibel dan dapat disesuaikan dengan kebutuhan Anda.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apakah usia 40 tahun bisa ikut kejar paket?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Tentu saja! PKBM Ristek Nusantara Jaya menerima peserta didik dari segala usia. Pendidikan adalah hak setiap orang, tidak peduli berapa usia Anda. Kami menyediakan pembelajaran yang fleksibel dan inklusif untuk memastikan Anda dapat belajar dengan nyaman. Usia bukan halangan untuk meraih ijazah dan kesuksesan!</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Saya dari sekolah internasional, bagaimana cara daftar di Ristek Nusantara Jaya?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Kami menerima pendaftar dari berbagai latar belakang pendidikan, termasuk lulusan sekolah internasional. Proses pendaftaran sama dengan peserta lainnya. Anda perlu membawa ijazah terakhir (atau transkrip akademik) dan dokumen identitas. Tim kami akan membantu Anda menentukan paket yang paling sesuai dengan latar belakang pendidikan Anda. Hubungi kami untuk diskusi lebih lanjut tentang penempatan terbaik.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Saya dropout dari sekolah, apakah PKBM Ristek Nusantara Jaya menerima saya?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Kami sangat menerima peserta didik yang pernah dropout atau putus sekolah. PKBM adalah lembaga yang inklusif dan membuka kesempatan kedua untuk semua orang. Kami memahami berbagai situasi dan siap memberikan dukungan belajar yang disesuaikan dengan kebutuhan Anda. Jangan khawatir tentang latar belakang Anda - yang penting adalah keinginan Anda untuk belajar dan meraih masa depan yang lebih baik!</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Berapa lama waktu yang dibutuhkan untuk menyelesaikan satu paket?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Durasi belajar tergantung pada kecepatan dan intensitas pembelajaran Anda. Secara umum, satu paket dapat diselesaikan dalam waktu 6-12 bulan, namun bisa lebih cepat atau lambat sesuai dengan kemampuan dan komitmen belajar Anda. Sistem kami fleksibel sehingga Anda dapat menyesuaikan jadwal sesuai ketersediaan waktu.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apakah ijazah dari PKBM diakui secara resmi?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Ya, ijazah dari PKBM Ristek Nusantara Jaya diakui secara resmi oleh Kementerian Pendidikan dan Kebudayaan. Ijazah Paket A, B, dan C memiliki nilai yang sama dengan ijazah dari sekolah formal. Anda dapat menggunakan ijazah ini untuk melanjutkan pendidikan ke jenjang berikutnya atau melamar pekerjaan.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apa saja biaya yang harus dikeluarkan?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Biaya di PKBM Ristek Nusantara Jaya sangat terjangkau dan kompetitif. Biaya mencakup uang pendaftaran, uang spp bulanan, dan uang ujian. Kami juga menyediakan berbagai pilihan pembayaran yang fleksibel. Untuk detail biaya spesifik setiap program, silakan hubungi kami langsung atau kunjungi kantor kami.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+       <button class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between font-semibold" style="color: #0c4a6e;" onclick="toggleFaq(this)"> <span>Apakah ada beasiswa atau bantuan finansial?</span> <i data-lucide="chevron-down" style="width:20px;height:20px;transition:transform 0.3s;"></i> </button>
+       <div class="faq-content hidden px-6 pb-4" style="color: #666; border-top: 1px solid #e5e7eb;">
+        <p class="text-sm leading-relaxed">Kami memiliki program beasiswa untuk peserta didik yang berprestasi dan memenuhi kriteria tertentu. Selain itu, kami juga menyediakan sistem cicilan yang fleksibel untuk membantu peserta didik dari berbagai latar belakang ekonomi. Hubungi kami untuk informasi lengkap tentang program bantuan yang tersedia.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        📰 AREA 11: BERITA & PENGUMUMAN TERBARU (Update informasi sekolah)
+        Bagian: 3 Kartu Berita dengan Thumbnail, Label, dan Link
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Berita & Pengumuman -->
+   <section id="berita" class="py-16 sm:py-24" style="background: linear-gradient(135deg, #f8fafc 0%, #fef3c7 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-14">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0891b2;">Informasi</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold mt-2" style="color: #0c4a6e;">Berita &amp; Pengumuman Terbaru</h2>
+      <div class="w-16 h-1 rounded-full mt-4 mx-auto" style="background-color: #f59e0b;"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl overflow-hidden card-hover" style="background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+       <div class="h-32 bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center justify-center text-4xl">
+        📢
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-2 mb-2">
+         <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white" style="background-color: #0891b2;">Terbaru</span> <span class="text-xs text-gray-500">Hari ini</span>
+        </div>
+        <h3 id="berita-1-title" class="font-bold text-lg mt-3" style="color: #0c4a6e;">Pembukaan Pendaftaran Paket C</h3>
+        <p id="berita-1-desc" class="text-sm text-gray-600 mt-2 line-clamp-3">Pendaftaran siswa baru untuk Paket C (Setara SMA) sudah dibuka. Daftar sekarang dan raih kesempatan emas untuk meraih ijazah!</p><a href="#kontak" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold" style="color: #0891b2;"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i> Selengkapnya</a>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+       <div class="h-32 bg-gradient-to-r from-amber-300 to-orange-400 flex items-center justify-center text-4xl">
+        📝
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-2 mb-2">
+         <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white" style="background-color: #f59e0b;">Penting</span> <span class="text-xs text-gray-500">2 hari lalu</span>
+        </div>
+        <h3 id="berita-2-title" class="font-bold text-lg mt-3" style="color: #0c4a6e;">Ujian Akhir Paket B Dimulai</h3>
+        <p id="berita-2-desc" class="text-sm text-gray-600 mt-2 line-clamp-3">Ujian akhir paket B akan dilaksanakan mulai 3 hingga 12 Juni 2025. Pastikan Anda sudah siap dan membawa dokumen yang diperlukan.</p><a href="#kontak" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold" style="color: #f59e0b;"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i> Selengkapnya</a>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+       <div class="h-32 bg-gradient-to-r from-pink-400 to-rose-400 flex items-center justify-center text-4xl">
+        🎓
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-2 mb-2">
+         <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white" style="background-color: #ec4899;">Event</span> <span class="text-xs text-gray-500">1 minggu lalu</span>
+        </div>
+        <h3 id="berita-3-title" class="font-bold text-lg mt-3" style="color: #0c4a6e;">Wisuda Angkatan 15 Sukses</h3>
+        <p id="berita-3-desc" class="text-sm text-gray-600 mt-2 line-clamp-3">Wisuda angkatan ke-15 PKBM RNJ telah berakhir dengan meriah. Selamat kepada semua alumni yang telah meraih kesuksesan!</p><a href="#kontak" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold" style="color: #ec4899;"><i data-lucide="arrow-right" style="width:16px;height:16px;"></i> Selengkapnya</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        📞 AREA 12: HUBUNGI KAMI / KONTAK & FORM PENDAFTARAN (Informasi kontak + form)
+        Bagian: 4 Kartu Kontak (Alamat, Telepon, Email, Jam Operasional), Form Pendaftaran, Success Message
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Kontak -->
    <section id="kontak" class="py-16 sm:py-24" style="background-color: #ffffff;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="text-center mb-14">
@@ -406,8 +1020,8 @@
          <i data-lucide="map-pin" style="width:20px;height:20px;color:white;"></i>
         </div>
         <div>
-         <h4 class="font-bold" style="color: #0c4a6e;">Alamat</h4><!-- ðŸ“ [ALAMAT SEKOLAH - UBAH ALAMAT LENGKAP SEKOLAH DI SINI] -->
-         <p id="contact-address" class="text-sm text-gray-600 mt-1">Jl. Percetakan Negara No.1, Cempaka Putih, Jakarta Pusat, Indonesia</p>
+         <h4 class="font-bold" style="color: #0c4a6e;">Alamat</h4>
+         <p id="contact-address" class="text-sm text-gray-600 mt-1">Jl. Pendidikan No. 123, Jakarta, Indonesia</p>
         </div>
        </div>
        <div class="flex items-start gap-4 p-5 rounded-2xl" style="background: #f0f9ff;">
@@ -415,7 +1029,7 @@
          <i data-lucide="phone" style="width:20px;height:20px;color:white;"></i>
         </div>
         <div>
-         <h4 class="font-bold" style="color: #0c4a6e;">Telepon</h4><!-- â˜Žï¸ [NOMOR TELEPON SEKOLAH - UBAH NOMOR TELEPON DI SINI] -->
+         <h4 class="font-bold" style="color: #0c4a6e;">Telepon</h4>
          <p id="contact-phone" class="text-sm text-gray-600 mt-1">(021) 1234-5678</p>
         </div>
        </div>
@@ -424,8 +1038,8 @@
          <i data-lucide="mail" style="width:20px;height:20px;color:white;"></i>
         </div>
         <div>
-         <h4 class="font-bold" style="color: #0c4a6e;">Email</h4><!-- ðŸ“§ [EMAIL SEKOLAH - UBAH EMAIL SEKOLAH DI SINI] -->
-         <p id="contact-email" class="text-sm text-gray-600 mt-1">paketc@gmail.com</p>
+         <h4 class="font-bold" style="color: #0c4a6e;">Email</h4>
+         <p id="contact-email" class="text-sm text-gray-600 mt-1">info@pkbmristeknusantara.id</p>
         </div>
        </div>
        <div class="flex items-start gap-4 p-5 rounded-2xl" style="background: #f0f9ff;">
@@ -434,24 +1048,27 @@
         </div>
         <div>
          <h4 class="font-bold" style="color: #0c4a6e;">Jam Operasional</h4>
-         <p class="text-sm text-gray-600 mt-1">Senin - Sabtu: 09.00 - 17.00 WIB</p>
+         <p class="text-sm text-gray-600 mt-1">Senin - Sabtu: 08.00 - 16.00 WIB</p>
         </div>
        </div>
-      </div><!-- Form -->
+      </div>
       <div class="rounded-2xl p-8" style="background: #f0f9ff; border: 1px solid #e0f2fe;">
        <h3 class="font-display text-xl font-bold mb-6" style="color: #0c4a6e;">Formulir Pendaftaran</h3>
        <form id="contact-form" class="space-y-4">
         <div>
-         <label for="nama" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Nama Lengkap</label> <input type="text" id="nama" required placeholder="Masukkan nama lengkap" class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; focus:ring-color: #0891b2; background: white;">
+         <label for="nama" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Nama Lengkap</label> <input type="text" id="nama" required placeholder="Masukkan nama lengkap" class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;">
         </div>
         <div>
          <label for="telp" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">No. Telepon</label> <input type="tel" id="telp" required placeholder="08xxxxxxxxxx" class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;">
         </div>
         <div>
-         <label for="cabang" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Pilih Cabang</label> <select id="cabang" required class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;"> <option value="">Pilih Lokasi Cabang</option> <option>Ristek Nusantara Jaya Jakarta</option> <option>Ristek Nusantara Jaya Cabang Cikarang</option> <option>Ristek Nusantara Jaya Cabang Tangerang</option> <option>Ristek Nusantara Jaya Cabang Depok</option> <option>Ristek Nusantara Jaya Cabang Yogyakarta</option> </select>
+         <label for="paket" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Program</label> <select id="paket" required class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;" onchange="updateCabangDisplay()"> <option value="">Pilih Program</option> <option value="paket">Paket A (Setara SD)</option> <option value="paket">Paket B (Setara SMP)</option> <option value="paket">Paket C (Setara SMA)</option> <option value="khusus">Homeschooling</option> <option value="khusus">Kursus Bahasa Inggris</option> <option value="khusus">Kursus Komputer</option> <option value="khusus">Belajar Al-Qur'an</option> </select>
         </div>
-        <div>
-         <label for="paket" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Program</label> <select id="paket" required class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;"> <option value="">Pilih Program</option> <option>Paket A (Setara SD) </option> <option>Paket B (Setara SMP)</option> <option>Paket C (Setara SMA)</option> </select>
+        <div id="cabang-container">
+         <label for="cabang" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Pilih Cabang</label> <select id="cabang" class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2" style="border-color: #bae6fd; background: white;"> <option value="">Pilih Lokasi Cabang</option> <option>Ristek Nusantara Jaya Jakarta</option> <option>Ristek Nusantara Jaya Cabang Cikarang</option> <option>Ristek Nusantara Jaya Cabang Tangerang</option> <option>Ristek Nusantara Jaya Cabang Depok</option> <option>Ristek Nusantara Jaya Cabang Yogyakarta</option> </select>
+        </div>
+        <div id="khusus-info" class="hidden p-4 rounded-xl text-sm" style="background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;">
+         <i data-lucide="info" style="width:16px;height:16px;display:inline;margin-right:8px;vertical-align:middle;"></i> <span>Program ini ditangani khusus oleh admin Jakarta. Pendaftaran akan dikirim ke admin Jakarta.</span>
         </div>
         <div>
          <label for="pesan" class="block text-sm font-medium mb-1.5" style="color: #0c4a6e;">Pesan</label> <textarea id="pesan" rows="3" placeholder="Tulis pesan Anda..." class="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none focus:ring-2 resize-none" style="border-color: #bae6fd; background: white;"></textarea>
@@ -465,12 +1082,15 @@
       </div>
      </div>
     </div>
-   </section><!-- Footer -->
+   </section><!-- ═══════════════════════════════════════════════════════════════════════════════════
+        🔗 AREA 13: FOOTER (Bagian bawah halaman dengan informasi & link)
+        Bagian: Logo + Deskripsi, Menu Link, Social Media Icons, Copyright
+        ═══════════════════════════════════════════════════════════════════════════════════ --> <!-- Footer -->
    <footer style="background-color: #0c4a6e;" class="py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="grid sm:grid-cols-3 gap-8 mb-8">
       <div>
-       <div class="flex items-center gap-3 mb-4"><img id="footer-logo" src="https://i.imgur.com/J1mKppg.png" alt="Logo PKBM" style="height: 40px; width: auto; object-fit: contain;" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.background='#f59e0b'; this.alt='Logo unavailable';"><!-- ðŸŽ¨ [NAMA SEKOLAH DI FOOTER - UBAH NAMA SEKOLAH DI BAGIAN BAWAH] --> <span id="footer-title" class="text-white font-bold">PKBM Ristek Nusantara Jaya</span>
+       <div class="flex items-center gap-3 mb-4"><img id="footer-logo" src="https://i.imgur.com/J1mKppg.png" alt="Logo PKBM" style="height: 50px; width: auto; object-fit: contain;" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.background='#f59e0b'; this.alt='Logo unavailable';"> <span id="footer-title" class="text-white font-bold text-lg">PKBM Ristek Nusantara Jaya</span>
        </div>
        <p class="text-white/60 text-sm">Membangun generasi cerdas dan berkarakter melalui pendidikan kesetaraan berkualitas.</p>
       </div>
@@ -483,23 +1103,195 @@
       <div>
        <h4 class="text-white font-semibold mb-3 text-sm">Media Sosial</h4>
        <div class="flex gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);"><i data-lucide="facebook" style="width:18px;height:18px;color:white;"></i>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);">
+         <i data-lucide="facebook" style="width:18px;height:18px;color:white;"></i>
         </div>
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);"><i data-lucide="instagram" style="width:18px;height:18px;color:white;"></i>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);">
+         <i data-lucide="instagram" style="width:18px;height:18px;color:white;"></i>
         </div>
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);"><i data-lucide="youtube" style="width:18px;height:18px;color:white;"></i>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: rgba(255,255,255,0.1);">
+         <i data-lucide="youtube" style="width:18px;height:18px;color:white;"></i>
         </div>
        </div>
       </div>
      </div>
      <div class="border-t border-white/10 pt-6 text-center">
-      <p class="text-white/40 text-sm">Â© 2026 PKBM Ristek Nusantara Jaya. Semua hak dilindungi.</p>
+      <p class="text-white/40 text-sm">© 2025 PKBM Ristek Nusantara Jaya. Semua hak dilindungi.</p>
      </div>
     </div>
    </footer>
   </div>
   <script>
-  // Config defaults
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+  let isModalOpen = false;
+
+  const whatsappBtn = document.getElementById('whatsapp-btn');
+  
+  // Tambahan style untuk support dragging
+  whatsappBtn.style.cursor = 'grab';
+  whatsappBtn.style.userSelect = 'none';
+
+  whatsappBtn.addEventListener('mousedown', startDrag);
+  whatsappBtn.addEventListener('touchstart', startDrag);
+
+  function startDrag(e) {
+    if (isModalOpen) return;
+    isDragging = true;
+    whatsappBtn.style.cursor = 'grabbing';
+    
+    const rect = whatsappBtn.getBoundingClientRect();
+    const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+    
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+
+    document.addEventListener('mousemove', moveDrag);
+    document.addEventListener('touchmove', moveDrag);
+  }
+
+  function moveDrag(e) {
+    if (!isDragging) return;
+    
+    const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+    const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+    
+    let x = clientX - offsetX;
+    let y = clientY - offsetY;
+
+    // Batas area (jangan keluar dari viewport)
+    const maxX = window.innerWidth - whatsappBtn.offsetWidth;
+    const maxY = window.innerHeight - whatsappBtn.offsetHeight;
+    
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    whatsappBtn.style.bottom = 'auto';
+    whatsappBtn.style.right = 'auto';
+    whatsappBtn.style.left = x + 'px';
+    whatsappBtn.style.top = y + 'px';
+  }
+
+  document.addEventListener('mouseup', stopDrag);
+  document.addEventListener('touchend', stopDrag);
+
+  function stopDrag() {
+    if (isDragging) {
+      isDragging = false;
+      whatsappBtn.style.cursor = 'grab';
+    }
+  }
+
+  // Click untuk buka modal
+  whatsappBtn.addEventListener('click', function(e) {
+    if (!isDragging) {
+      openWhatsAppAdmin();
+    }
+  });
+
+  function openWhatsAppAdmin() {
+    isModalOpen = true;
+    // Tampilkan modal pilih cabang
+    const modal = document.createElement('div');
+    modal.id = 'cabang-modal';
+    modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 999;';
+    
+    const cabangList = [
+      { nama: 'Jakarta', admin: '62812345678' },
+      { nama: 'Cabang Cikarang', admin: '62812345678' },
+      { nama: 'Cabang Tangerang', admin: '62812345678' },
+      { nama: 'Cabang Depok', admin: '62812345678' },
+      { nama: 'Cabang Yogyakarta', admin: '62812345678' }
+    ];
+    
+    let cabangButtons = cabangList.map(c => 
+      `<button onclick="sendWhatsAppToCabang('${c.admin}', '${c.nama}')" style="display: block; width: 100%; text-align: left; padding: 12px 16px; background: white; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; font-size: 14px; color: #0c4a6e;">
+        <div style="font-weight: 600; margin-bottom: 4px;">📍 ${c.nama}</div>
+        <div style="font-size: 12px; color: #999;">Hubungi admin cabang ini</div>
+      </button>`
+    ).join('');
+    
+    modal.innerHTML = `
+      <div style="background: white; padding: 24px; border-radius: 16px; max-width: 400px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <h3 style="font-size: 18px; font-weight: 700; color: #0c4a6e; margin-bottom: 16px;">Pilih Lokasi Cabang</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Pilih cabang terdekat untuk mendapatkan informasi yang lebih baik:</p>
+        <div style="margin-bottom: 16px;">
+          ${cabangButtons}
+        </div>
+        <button onclick="closeWAModal()" style="width: 100%; padding: 10px; background: #f0f0f0; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; color: #666; transition: all 0.2s;">Tutup</button>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    modal.onclick = (e) => {
+      if (e.target === modal) closeWAModal();
+    };
+  }
+
+  function closeWAModal() {
+    const modal = document.getElementById('cabang-modal');
+    if (modal) modal.remove();
+    isModalOpen = false;
+  }
+
+  function sendWhatsAppToCabang(adminNumber, cabangNama) {
+    const message = `Halo PKBM ${cabangNama}, saya ingin bertanya tentang pendaftaran program kesetaraan di cabang Anda.`;
+    const waLink = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+    window.open(waLink, '_blank');
+    closeWAModal();
+  }
+  
+
+  let galeriIndex = 0;
+  const galeriTotal = 8;
+  
+  function slideGaleri(direction) {
+    const carousel = document.getElementById('galeri-carousel');
+    const itemWidth = carousel.querySelector('.galeri-item').offsetWidth + 16; // 16px is gap
+    
+    galeriIndex += direction;
+    
+    // Batas scroll - cegah scroll terlalu jauh
+    const maxScroll = galeriTotal - 4; // Asumsi max 4 item visible di layar besar
+    if (window.innerWidth < 1024) {
+      if (galeriIndex < 0) galeriIndex = galeriTotal - 1;
+      if (galeriIndex > galeriTotal - 1) galeriIndex = 0;
+    } else {
+      if (galeriIndex < 0) galeriIndex = 0;
+      if (galeriIndex > maxScroll) galeriIndex = maxScroll;
+    }
+    
+    carousel.style.transform = `translateX(-${galeriIndex * itemWidth}px)`;
+    updateGaleriDots();
+  }
+  
+  function updateGaleriDots() {
+    const dotsContainer = document.getElementById('galeri-dots');
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < galeriTotal; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'w-2 h-2 rounded-full transition-all cursor-pointer';
+      dot.style.backgroundColor = i === galeriIndex ? '#0891b2' : '#d1d5db';
+      dot.onclick = () => {
+        galeriIndex = i;
+        const carousel = document.getElementById('galeri-carousel');
+        const itemWidth = carousel.querySelector('.galeri-item').offsetWidth + 16;
+        carousel.style.transform = `translateX(-${galeriIndex * itemWidth}px)`;
+        updateGaleriDots();
+      };
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function toggleFaq(button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    content.classList.toggle('hidden');
+    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+  }
+
   const defaultConfig = {
     background_color: '#f0f9ff',
     surface_color: '#ffffff',
@@ -513,16 +1305,29 @@
     hero_description: 'Pusat Kegiatan Belajar Masyarakat yang menyediakan pendidikan kesetaraan berkualitas untuk semua kalangan. Bersama kami, raih ijazah dan masa depan cerah.',
     about_text: 'PKBM Ristek Nusantara Jaya adalah lembaga pendidikan nonformal yang berkomitmen memberikan layanan pendidikan kesetaraan (Paket A, B, dan C) bagi masyarakat yang membutuhkan. Dengan tenaga pengajar profesional dan kurikulum yang terstruktur, kami memastikan setiap peserta didik mendapatkan pendidikan berkualitas setara dengan pendidikan formal.',
     address_text: 'Jl. Percetakan Negara No. 1, Cempaka Putih, Jakarta Pusat, Indonesia',
-    phone_text: '(021) .............',
+    phone_text: '(021) 7690-2445',
     email_text: 'info@pkbmristeknusantara.id',
-    admin_jakarta: '628161404440',
-    admin_cikarang: '6285888157682',
-    admin_tangerang: '6287780320246',
-    admin_depok: '6289638331873',
-    admin_yogyakarta: '6287780320246'
+    admin_jakarta: '62812345678',
+    admin_cikarang: '62812345678',
+    admin_tangerang: '62812345678',
+    admin_depok: '62812345678',
+    admin_yogyakarta: '62812345678',
+    berita_1_title: 'Pembukaan Pendaftaran Paket C',
+    berita_1_desc: 'Pendaftaran siswa baru sudah dibuka...',
+    berita_2_title: 'Ujian Akhir Paket B Dimulai',
+    berita_2_desc: 'Ujian akhir paket B akan dilaksanakan...',
+    berita_3_title: 'Wisuda Angkatan 15 Sukses',
+    berita_3_desc: 'Wisuda angkatan ke-15 telah berakhir...',
+    galeri_1_title: 'Wisuda Angkatan',
+    galeri_2_title: 'Pembelajaran Aktif',
+    galeri_3_title: 'Komunitas Belajar',
+    galeri_4_title: 'Prestasi Siswa',
+    galeri_5_title: 'Lab Komputer',
+    galeri_6_title: 'Seni & Budaya',
+    galeri_7_title: 'Perpustakaan',
+    galeri_8_title: 'Achievement Star'
   };
 
-  // Mapping cabang ke nomor admin
   const cabangAdminMap = {
     'Ristek Nusantara Jaya Jakarta': 'admin_jakarta',
     'Ristek Nusantara Jaya Cabang Cikarang': 'admin_cikarang',
@@ -531,30 +1336,41 @@
     'Ristek Nusantara Jaya Cabang Yogyakarta': 'admin_yogyakarta'
   };
 
-  // Form handling - kirim ke WhatsApp
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
     const nama = document.getElementById('nama').value;
     const telp = document.getElementById('telp').value;
-    const cabang = document.getElementById('cabang').value;
-    const paket = document.getElementById('paket').value;
     const pesan = document.getElementById('pesan').value;
     
-    // Dapatkan admin nomor berdasarkan cabang
-    const adminKey = cabangAdminMap[cabang];
-    const adminNumber = defaultConfig[adminKey] || defaultConfig.admin_jakarta;
+    const paketElement = document.querySelector('#paket option:checked');
+    const selectedProgram = paketElement ? paketElement.textContent : '';
     
-    // Format pesan untuk WhatsApp
-    const whatsappMessage = `*PENDAFTARAN BARU PKBM RISTEK NUSANTARA JAYA*%0A%0A*Nama:* ${nama}%0A*No. Telepon:* ${telp}%0A*Cabang:* ${cabang}%0A*Program:* ${paket}%0A*Pesan:* ${pesan}`;
+    // Program khusus yang HANYA dikirim ke admin Jakarta
+    const khususPrograms = ['Homeschooling', 'Kursus Bahasa Inggris', 'Kursus Komputer', 'Belajar Al-Qur\'an'];
+    const isProgramKhusus = khususPrograms.some(prog => selectedProgram.includes(prog));
     
-    // Buat link WhatsApp ke admin cabang
+    let adminNumber = defaultConfig.admin_jakarta; // Default ke Jakarta
+    let cabangInfo = 'Jakarta'; // Info cabang untuk pesan
+    
+    // Jika program reguler (Paket A/B/C), gunakan cabang yang dipilih
+    if (!isProgramKhusus) {
+      const cabang = document.getElementById('cabang').value;
+      const adminKey = cabangAdminMap[cabang];
+      adminNumber = defaultConfig[adminKey] || defaultConfig.admin_jakarta;
+      cabangInfo = cabang || 'Belum dipilih';
+    }
+    
+    // Buat pesan WhatsApp dengan informasi lengkap
+    const cabangLine = isProgramKhusus ? '%0A*Cabang:* Jakarta (khusus)' : `%0A*Cabang:* ${cabangInfo}`;
+    const whatsappMessage = `*PENDAFTARAN BARU PKBM RISTEK NUSANTARA JAYA*%0A%0A*Nama:* ${nama}%0A*No. Telepon:* ${telp}%0A*Program:* ${selectedProgram}${cabangLine}%0A*Pesan:* ${pesan || '-'}`;
+    
+    console.log('Admin tujuan:', adminNumber);
+    console.log('Program:', selectedProgram);
+    console.log('Program khusus?', isProgramKhusus);
+    
     const waLink = `https://wa.me/${adminNumber}?text=${whatsappMessage}`;
-    
-    // Buka WhatsApp di tab baru
     window.open(waLink, '_blank');
     
-    // Tampilkan pesan sukses
     this.style.display = 'none';
     document.getElementById('form-success').classList.remove('hidden');
     lucide.createIcons();
@@ -563,19 +1379,49 @@
       this.style.display = 'block';
       this.reset();
       document.getElementById('form-success').classList.add('hidden');
+      updateCabangDisplay();
     }, 4000);
   });
 
-  // Element SDK
+  function updateCabangDisplay() {
+    const paket = document.getElementById('paket').value;
+    const cabangContainer = document.getElementById('cabang-container');
+    const khususInfo = document.getElementById('khusus-info');
+    const cabangSelect = document.getElementById('cabang');
+    
+    const selectedOption = document.querySelector('#paket option:checked');
+    const selectedProgram = selectedOption ? selectedOption.textContent : '';
+    
+    // Program khusus yang hanya ke Jakarta
+    const khususPrograms = ['Homeschooling', 'Kursus Bahasa Inggris', 'Kursus Komputer', 'Belajar Al-Qur\'an'];
+    const isProgramKhusus = khususPrograms.some(prog => selectedProgram.includes(prog));
+    
+    if (isProgramKhusus) {
+      // Sembunyikan pilihan cabang, tampilkan info
+      cabangContainer.style.display = 'none';
+      khususInfo.classList.remove('hidden');
+      cabangSelect.removeAttribute('required');
+    } else if (paket === '') {
+      // Jika tidak ada pilihan program
+      cabangContainer.style.display = 'none';
+      khususInfo.classList.add('hidden');
+      cabangSelect.removeAttribute('required');
+    } else {
+      // Tampilkan pilihan cabang untuk Paket A/B/C
+      cabangContainer.style.display = 'block';
+      khususInfo.classList.add('hidden');
+      cabangSelect.setAttribute('required', 'required');
+    }
+    lucide.createIcons();
+  }
+
   async function initSDK() {
     if (!window.elementSdk) return;
-
     await window.elementSdk.init({
       defaultConfig,
       async onConfigChange(config) {
         const c = { ...defaultConfig, ...config };
         const fontStack = `${c.font_family}, 'Plus Jakarta Sans', sans-serif`;
-
         document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
         document.getElementById('navbar').style.backgroundColor = c.text_color;
         document.getElementById('hero-title').innerHTML = c.school_name.replace(' ', '<br>');
@@ -589,14 +1435,24 @@
         document.getElementById('contact-address').textContent = c.address_text;
         document.getElementById('contact-phone').textContent = c.phone_text;
         document.getElementById('contact-email').textContent = c.email_text;
-
-        // Apply font
+        document.getElementById('berita-1-title').textContent = c.berita_1_title;
+        document.getElementById('berita-1-desc').textContent = c.berita_1_desc;
+        document.getElementById('berita-2-title').textContent = c.berita_2_title;
+        document.getElementById('berita-2-desc').textContent = c.berita_2_desc;
+        document.getElementById('berita-3-title').textContent = c.berita_3_title;
+        document.getElementById('berita-3-desc').textContent = c.berita_3_desc;
+        document.getElementById('galeri-1-title').textContent = c.galeri_1_title;
+        document.getElementById('galeri-2-title').textContent = c.galeri_2_title;
+        document.getElementById('galeri-3-title').textContent = c.galeri_3_title;
+        document.getElementById('galeri-4-title').textContent = c.galeri_4_title;
+        document.getElementById('galeri-5-title').textContent = c.galeri_5_title;
+        document.getElementById('galeri-6-title').textContent = c.galeri_6_title;
+        document.getElementById('galeri-7-title').textContent = c.galeri_7_title;
+        document.getElementById('galeri-8-title').textContent = c.galeri_8_title;
         document.body.style.fontFamily = fontStack;
         document.querySelectorAll('.font-display').forEach(el => {
           el.style.fontFamily = `'Playfair Display', ${fontStack}`;
         });
-
-        // Font size scaling
         const base = c.font_size || 16;
         document.body.style.fontSize = `${base}px`;
       },
@@ -611,14 +1467,8 @@
             { get: () => c.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); }},
           ],
           borderables: [],
-          fontEditable: {
-            get: () => c.font_family,
-            set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
-          },
-          fontSizeable: {
-            get: () => c.font_size,
-            set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
-          }
+          fontEditable: { get: () => c.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }},
+          fontSizeable: { get: () => c.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }}
         };
       },
       mapToEditPanelValues(config) {
@@ -631,13 +1481,28 @@
           ['address_text', c.address_text],
           ['phone_text', c.phone_text],
           ['email_text', c.email_text],
+          ['berita_1_title', c.berita_1_title],
+          ['berita_1_desc', c.berita_1_desc],
+          ['berita_2_title', c.berita_2_title],
+          ['berita_2_desc', c.berita_2_desc],
+          ['berita_3_title', c.berita_3_title],
+          ['berita_3_desc', c.berita_3_desc],
+          ['galeri_1_title', c.galeri_1_title],
+          ['galeri_2_title', c.galeri_2_title],
+          ['galeri_3_title', c.galeri_3_title],
+          ['galeri_4_title', c.galeri_4_title],
+          ['galeri_5_title', c.galeri_5_title],
+          ['galeri_6_title', c.galeri_6_title],
+          ['galeri_7_title', c.galeri_7_title],
+          ['galeri_8_title', c.galeri_8_title]
         ]);
       }
     });
   }
 
   initSDK();
+  updateGaleriDots();
   lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f1b37c26631fce4',t:'MTc3NzA5Nzc3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f2a506a93f6ce69',t:'MTc3NzI1NjA3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
